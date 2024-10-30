@@ -1,0 +1,27 @@
+<?php
+
+    if ( $parameters && ( $parameters == 'filtered' || $parameters == 'fullList' ) ) {
+        
+        $ids = [101, 107, 543];
+        echo $parameters == 'filtered' ? '<h2>Filtered list:</h2>' : '<h2>Full list</h2>';
+        echo '<ul>';
+        foreach( $hebergements as $collection ){
+            if( $parameters == 'filtered' && in_array( $collection->getIdcamping(), $ids) ){
+                echo '<li>Camping Id: '.$collection->getIdcamping().'</li>';
+                echo '<li>Hebergement: '.$collection->getType_hebergement().'</li>';
+                echo '<li>Date départ: '.$collection->getDate().'</li>';
+                echo '<li>Prix: '.$collection->getPrix().'</li>';
+                echo '<li>Gamme: '.$collection->getGamme().'</li>';
+                echo '<br/>';
+            } else if( $parameters == 'fullList' ){
+                echo '<li>Camping Id: '.$collection->getIdcamping().'</li>';
+                echo '<li>Hebergement: '.$collection->getType_hebergement().'</li>';
+                echo '<li>Date départ: '.$collection->getDate().'</li>';
+                echo '<li>Prix: '.$collection->getPrix().'</li>';
+                echo '<li>Gamme: '.$collection->getGamme().'</li>';
+                echo '<br/>';
+            }
+        }
+        echo '</ul>';
+    };
+?>
